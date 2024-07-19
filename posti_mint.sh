@@ -9,7 +9,7 @@ ASDF_VERSION="v0.14.0"
 NODEJS_VERSION="20.15.0"
 RUST_VERSION="1.79.0"
 FLATPAK_APPS="it.mijorus.gearlever"
-APT_APPS="spotify-client obs-studio"
+APT_APPS="obs-studio"
 APPIMAGE_URL="https://app.warp.dev/download?package=appimage"
 FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/FiraCode.zip"
 BACKUP_PATH="~/env/ssh_backup.tar.gz"
@@ -42,9 +42,6 @@ sudo apt install -y ./vivaldi-stable.deb
 wget -O discord.deb "https://discord.com/api/download?platform=linux&format=deb"
 sudo apt install -y ./discord.deb
 
-wget -O obsidian.deb "https://obsidian.md/download?platform=linux&format=deb"
-sudo apt install -y ./obsidian.deb
-
 # Instalar o tema Powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.powerlevel10k
 echo 'source ~/.powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
@@ -65,6 +62,7 @@ echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >>~/.zshrc
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch $ASDF_VERSION
 echo '. "$HOME/.asdf/asdf.sh"' >>~/.zshrc
 echo '. "$HOME/.asdf/asdf.sh"' >>~/.bashrc
+source ~/.bashrc
 
 # Instalar Node.js e Rust usando asdf
 asdf plugin add nodejs
