@@ -36,10 +36,8 @@ sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # Adicionar o repositório do Vivaldi
-wget -qO- $VIVALDI_KEY_URL | sudo apt-key add -
-sudo sh -c "echo 'deb [arch=amd64] $VIVALDI_REPO_URL stable main' > /etc/apt/sources.list.d/vivaldi.list"
-sudo apt update
-sudo apt-get install vivaldi-stable
+wget -O vivaldi-stable.deb "https://downloads.vivaldi.com/stable/vivaldi-stable_6.8.3381.48-1_amd64.deb"
+sudo apt install -y ./vivaldi-stable.deb
 
 wget -O discord.deb "https://discord.com/api/download?platform=linux&format=deb"
 sudo apt install -y ./discord.deb
