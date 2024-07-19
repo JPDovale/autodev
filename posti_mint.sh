@@ -9,12 +9,14 @@ ASDF_VERSION="v0.14.0"
 NODEJS_VERSION="20.15.0"
 RUST_VERSION="1.79.0"
 FLATPAK_APPS="it.mijorus.gearlever"
-APT_APPS="spotify-client vivaldi-stable obs-studio obsidian discord"
+APT_APPS="spotify-client obs-studio obsidian discord"
 APPIMAGE_URL="https://app.warp.dev/download?package=appimage"
 FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/FiraCode.zip"
 BACKUP_PATH="~/env/ssh_backup.tar.gz"
 NVIM_REPO="git@github.com:JPDovale/nvim-config.git"
 LEARN_TO_LEARN_REPO="git@github.com:JPDovale/LearnToLearn.git"
+VIVALDI_REPO_URL="https://repo.vivaldi.com/stable/deb/"
+VIVALDI_KEY_URL="https://repo.vivaldi.com/archive/linux_signing_key.pub"
 
 # Atualizar pacotes e instalar dependências básicas
 sudo apt update && sudo apt upgrade -y
@@ -32,6 +34,12 @@ echo \
 	sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# Adicionar o repositório do Vivaldi
+wget -qO- $VIVALDI_KEY_URL | sudo apt-key add -
+sudo sh -c "echo 'deb [arch=amd64] $VIVALDI_REPO_URL stable main' > /etc/apt/sources.list.d/vivaldi.list"
+sudo apt update
+sudo apt-get install vivaldi-stable
 
 # Instalar o tema Powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.powerlevel10k
